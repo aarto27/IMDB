@@ -2,7 +2,7 @@ const searchBtn = document.getElementById("searchBtn");
 const movieInput = document.getElementById("movieInput");
 const resultDiv = document.getElementById("result");
 
-const API_KEY = "e6a5d8cd";
+const API_KEY = "e6a5d8cd"; // OMDb API key
 
 async function searchMovie(query = "") {
   resultDiv.innerHTML = `<p class="loading">Loading...</p>`;
