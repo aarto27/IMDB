@@ -4,8 +4,24 @@ const resultDiv = document.getElementById("result");
 
 const API_KEY = "e6a5d8cd"; // OMDb API key
 
+// 🧠 Show skeletons while loading
+function showSkeletons(count = 6) {
+  resultDiv.innerHTML = "";
+  for (let i = 0; i < count; i++) {
+    const skeleton = document.createElement("div");
+    skeleton.className = "card skeleton-card";
+    skeleton.innerHTML = `
+      <div class="skeleton skeleton-poster"></div>
+      <div class="skeleton skeleton-title"></div>
+      <div class="skeleton skeleton-text"></div>
+      <div class="skeleton skeleton-text short"></div>
+    `;
+    resultDiv.appendChild(skeleton);
+  }
+}
+
 async function searchMovie(query = "") {
-  resultDiv.innerHTML = `<p class="loading">Loading...</p>`;
+  showSkeletons();
 
   try {
     let searchUrl;
@@ -32,7 +48,7 @@ async function searchMovie(query = "") {
       const { Title, Year, Poster, imdbID, imdbRating } = details;
 
       const card = document.createElement("div");
-      card.className = "card";
+      card.className = "card fade-in";
       card.innerHTML = `
         <img src="${Poster !== "N/A" ? Poster : "https://via.placeholder.com/300x450?text=No+Image"}"
              alt="${Title}" class="movie-poster" data-id="${imdbID}" />

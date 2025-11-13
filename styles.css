@@ -1,51 +1,62 @@
-/* 🌙 General Reset & Fonts */
+/* 🌌 RESET */
 * {
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  background: radial-gradient(circle at top, #141414 0%, #0d0d0d 100%);
-  color: #f5f5f5;
+  background: radial-gradient(circle at top, #0d0d0d 0%, #000 100%);
+  color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
   padding: 40px 20px;
+  overflow-x: hidden;
 }
 
-/* 🎬 Heading */
-h1 {
-  font-size: 2.8rem;
-  color: #ffcc00;
-  margin-bottom: 35px;
-  text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
-  letter-spacing: 1px;
+/* 🎬 HEADER */
+.header {
   text-align: center;
+  margin-bottom: 30px;
+  animation: fadeInDown 0.6s ease-out;
 }
 
-/* 🔍 Search Bar */
+.header h1 {
+  font-size: 3rem;
+  color: #ffcc00;
+  text-shadow: 0 0 25px rgba(255, 204, 0, 0.6);
+}
+
+.tagline {
+  font-size: 1rem;
+  color: #ccc;
+  margin-top: 6px;
+}
+
+/* 🔍 SEARCH */
 .search-container {
   display: flex;
   width: 100%;
-  max-width: 600px;
-  background: #1e1e1e;
+  max-width: 650px;
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 50px;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(255, 204, 0, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(255, 204, 0, 0.15);
   margin-bottom: 45px;
-  transition: all 0.3s ease;
+  transition: box-shadow 0.3s;
 }
 
 .search-container:focus-within {
-  box-shadow: 0 0 25px rgba(255, 204, 0, 0.3);
+  box-shadow: 0 0 30px rgba(255, 204, 0, 0.4);
 }
 
 input[type="text"] {
   flex: 1;
-  padding: 18px 22px;
+  padding: 16px 20px;
   border: none;
   outline: none;
   background: transparent;
@@ -54,7 +65,7 @@ input[type="text"] {
 }
 
 input::placeholder {
-  color: #999;
+  color: #bbb;
 }
 
 button {
@@ -62,113 +73,89 @@ button {
   border: none;
   padding: 16px 35px;
   cursor: pointer;
-  font-size: 1rem;
   font-weight: 600;
   color: #111;
-  transition: all 0.3s ease;
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
+  transition: 0.3s;
 }
 
 button:hover {
+  transform: scale(1.05);
   background: linear-gradient(135deg, #ffe066, #ffb300);
-  transform: scale(1.06);
 }
 
-/* 🧩 Movie Grid */
+/* 🧩 MOVIE GRID */
 #result {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
   width: 100%;
-  max-width: 1250px;
+  max-width: 1200px;
+  margin-bottom: 50px;
 }
 
-/* 🎞 Movie Card */
+/* 🎞 MOVIE CARD */
 .card {
-  background: #1b1b1b;
-  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s, box-shadow 0.3s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   text-align: center;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 0 25px rgba(255, 204, 0, 0.25);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 204, 0, 0.3);
 }
 
 .movie-poster {
   width: 100%;
-  height: 380px;
+  height: 350px;
   object-fit: cover;
-  transition: transform 0.3s;
-}
-
-.card:hover .movie-poster {
-  transform: scale(1.05);
 }
 
 .movie-title {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #ffcc00;
-  margin: 12px 0 5px;
-  font-weight: 600;
+  margin: 10px 0 4px;
 }
 
 .movie-year,
-.movie-rating,
-.movie-actors {
+.movie-rating {
   font-size: 0.9rem;
-  color: #bbb;
-  margin: 3px 0;
+  color: #ccc;
 }
 
-.movie-plot {
-  font-size: 0.85rem;
-  color: #aaa;
-  margin: 8px 12px 14px;
-  line-height: 1.5;
-}
-
-p.loading {
-  font-size: 1.2rem;
-  color: #ffcc00;
-}
-
-/* 🎥 Movie Details Page */
+/* 🎥 DETAILS PAGE */
 .details-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 90vh;
-  padding: 30px 20px;
+  padding: 40px 20px;
 }
 
 .details-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 30px rgba(255, 204, 0, 0.15);
   display: flex;
   flex-direction: column;
-  background: #1b1b1b;
-  border-radius: 20px;
-  max-width: 950px;
+  align-items: center;
+  max-width: 900px;
   width: 100%;
-  box-shadow: 0 8px 30px rgba(255, 204, 0, 0.15);
-  padding: 30px;
-  text-align: center;
-  animation: fadeIn 0.6s ease;
+  backdrop-filter: blur(15px);
+  animation: fadeInUp 0.7s ease;
 }
 
 .details-poster {
-  width: 100%;
-  max-width: 400px;
-  align-self: center;
+  width: 320px;
   border-radius: 12px;
   box-shadow: 0 0 25px rgba(255, 204, 0, 0.3);
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   transition: transform 0.3s;
 }
 
@@ -176,36 +163,48 @@ p.loading {
   transform: scale(1.05);
 }
 
+.details-title {
+  font-size: 2rem;
+  color: #ffcc00;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
 .details-info {
   color: #eee;
   text-align: left;
-}
-
-.details-title {
-  color: #ffcc00;
-  font-size: 2.2rem;
-  margin-bottom: 15px;
+  width: 100%;
 }
 
 .details-info p {
-  margin: 6px 0;
+  margin: 5px 0;
   font-size: 1rem;
 }
 
 .details-plot {
-  margin-top: 20px;
   color: #ccc;
-  line-height: 1.7;
-  font-size: 1rem;
+  line-height: 1.6;
+  margin-top: 15px;
 }
 
+/* 🎞 Trailer */
+#trailer {
+  margin-top: 25px;
+  width: 100%;
+  text-align: center;
+}
+#trailer iframe {
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(255, 204, 0, 0.3);
+}
+
+/* 🪄 Button */
 .details-card button {
-  align-self: center;
   margin-top: 25px;
   background: linear-gradient(135deg, #ffcc00, #ff9900);
   color: #111;
   border: none;
-  padding: 14px 26px;
+  padding: 14px 28px;
   font-weight: 600;
   border-radius: 10px;
   cursor: pointer;
@@ -217,83 +216,148 @@ p.loading {
   transform: scale(1.05);
 }
 
-/* ✨ Animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* 💫 ANIMATIONS */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* 📱 Responsive Design */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in { animation: fadeInUp 0.6s ease; }
+
+/* 📱 RESPONSIVE */
 @media (max-width: 768px) {
-  h1 {
-    font-size: 2.2rem;
-  }
-
-  .details-card {
-    padding: 20px;
-  }
-
-  .details-title {
-    font-size: 1.8rem;
-  }
-
-  .movie-poster {
-    height: 320px;
-  }
-
-  button {
-    padding: 14px 25px;
-  }
-}
-.details-card {
-  display: flex;
-  gap: 20px;
-  background: #f8f8f8;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  max-width: 900px;
-  margin: 40px auto;
-  background: #1b1b1b;
+  .header h1 { font-size: 2rem; }
+  .movie-poster { height: 280px; }
+  .details-poster { width: 90%; }
+  .details-title { font-size: 1.6rem; }
 }
 
-.details-poster {
-  width: 300px;
-  border-radius: 10px;
+/* ⚡ FOOTER */
+.footer {
+  text-align: center;
+  color: #777;
+  font-size: 0.9rem;
+  margin-top: auto;
 }
 
-.details-info {
-  flex: 1;
+/* 💫 Skeleton Loader Styles */
+.skeleton-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 12px;
+  animation: fadeIn 0.5s ease-in;
 }
 
-.details-title {
-  font-size: 2rem;
+.skeleton {
+  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+  border-radius: 6px;
+}
+
+.skeleton-poster {
+  height: 330px;
+  border-radius: 12px;
   margin-bottom: 10px;
 }
 
-.details-info p {
-  margin: 6px 0;
+.skeleton-title {
+  height: 20px;
+  width: 70%;
+  margin: 10px auto;
 }
 
-.details-plot {
+.skeleton-text {
+  height: 14px;
+  width: 60%;
+  margin: 6px auto;
+}
+
+.skeleton-text.short {
+  width: 40%;
+}
+
+/* 🔄 Shimmer animation */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* 🪞 DETAILS SKELETON STYLES */
+.details-skeleton-poster {
+  height: 380px;
+  width: 320px;
+  margin: 0 auto 15px;
+}
+
+.details-card.skeleton-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  width: 100%;
+  margin-top: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 30px rgba(255, 204, 0, 0.15);
+}
+
+.details-card.skeleton-card .details-info {
+  width: 100%;
   margin-top: 10px;
-  font-style: italic;
 }
 
-button {
-  padding: 10px 15px;
-  background-color: #007bff;
+/* 🎞 Netflix-style Back Button */
+.back-btn {
+  position: fixed;
+  top: 25px;
+  left: 25px;
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: 600;
   color: #fff;
-  border: none;
-  border-radius: 6px;
+  background: rgba(255, 204, 0, 0.15);
+  border: 2px solid #ffcc00;
+  border-radius: 50px;
+  backdrop-filter: blur(6px);
   cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeInUp 0.6s forwards ease-out 0.4s;
 }
-button:hover {
-  background-color: #0056b3;
+
+.back-btn:hover {
+  background: #ffcc00;
+  color: #1a1a1a;
+  transform: scale(1.07);
+  box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+}
+
+/* 🕊️ Fly-away + zoom-out animation when clicked */
+.fly-away {
+  animation: floatAway 0.6s ease-in forwards;
+}
+
+@keyframes floatAway {
+  0% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(1.1) translateY(-15px);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.5) translateY(-100px);
+    opacity: 0;
+  }
 }
